@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Futiba Club </title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/futiba-interno.css" rel="stylesheet">
+    <link href="/css/interface-projeto.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-light green fixed-top scrolling-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="/img-futiba-club/logo.png" height="30" alt="Futiba Club">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                    <% include elements/menu_itens %>
+                    
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="content">
+        <div class="container">
+            <div >
+                <h2>Grupo: <%= group.name %></h2>
+            </div>
+            <hr>
+              <br>
+                <% if(group.role === 'owner'){ %>
+                <% if(pendings.length > 0){ %>
+                <table class="table table-striped">
+                        <thead>
+                            
+                            <tr>
+                                <th class="h5">Id</th>
+                                <th class="text-center mb-4"><h5>Grupos</h5></th>
+                                <th class="text-center mb-4"><h5></h5></th>
+                                <th class="text-center mb-4"><h5>Ações</h5></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                       <% pendings.forEach( user => { %>
+                     <tr>
+                        <th class="h5" scope="row"><%= user.id %></th>
+                        <td class="h5 text-center mb-4">
+                            <a href="/groups/<%= group.id %>">
+                            <%= user.name %>
+                        </a>
+                        </td>
+                        <td class="h5 text-center mb-4"><%= user.role %> </td>
+                          <td>
+                        <div class="text-center mb-4">
+                            <a button class="btn btn-outline-primary" href="/groups/<%= group.id %>/pending/<%= user.id %>/yes">Permitir</a></button>
+                            <a button class="btn btn-outline-danger" href="/groups/<%= group.id %>/pending/<%= user.id %>/no">Negar</a></button>
+                        </div>
+                           </td>
+                    </tr>
+                    <% }) %>
+                   </tbody>
+                    </table>
+                    <hr>
+                    <% }else{ %>
+                    <p class="alert alert-info">Nenhum usuário pendente.</p>
+                    <% } %>
+                    <% } %>
+                <% if(group.role === 'pending'|| !group.role ){ %>
+                 <p class="alert alert-info">Você precisa ser aprovado pelo dono do grupo.</p>
+                 <% }else{ %>
+             <form method="post">  
+            <table class="table table-striped">
+            <thead>
+                <% if(games > 0) { %>
+             <tr> 
+             <th class="h5">Id</th>          
+             <th class="h5 text-center mb-4">Palpites dos Jogos</th>
+                  
+              <th class="h5 text-center mb-4">Pontução</th>
+              </tr>
+              <% } %>
+              </thead>
+              <tbody>     
+              <% games.forEach( game => { %>
+                <div class="row w-row">
+                 <div class="w-col w-col-9">
+                 <div class="text-block-5">
+                 <tr>
+                <% if(game.guess_a || game.guess_b) { %>
+                 <td>
+                <%= game.id %>
+                  </td> 
+                 <td> 
+                   <div class="match-summary w-container">
+                   <div class="team-a">
+                   <div class="h5"> <%= game.team_a%></div>
+                   <img class="team-badge" height="40" src="/images/escudos/logo1.png">
+                   </div>
+                   <% if(game.guess_a) { %>
+                    <div class="match-result">
+                    <div class="text-block"> <span class="score-team-a"> <%= game.guess_a %></span>
+                    </div> 
+                    </div>    
+                      <% } %>
+                   <div>
+                   <span class="vs">x</span>
+                   </div>
+                   <% if(game.guess_b) { %>
+                    <div class="match-result">
+                     <div class="text-block"> <span class="score-team-b"> <%= game.guess_b %></span>
+                  </div> 
+                  </div>     
+                  <% } %> 
+                 <div class="team-b">
+                   <img class="team-badge" height="40" src="/images/escudos/logo4.png" >
+                 <div class="h5"> <%= game.team_b %></div>
+              </div>
+             </div>   
+              </td>
+           <% if(game.result_a || game.result_b) { %>
+            <div>
+           <td class="h5 text-center mb-4"><%= game.score %></td>
+            </div>
+            <% }else{ %>
+           <div>    
+           <td class="h5 text-center mb-4">Em andamento</td>
+           </div> 
+           <% } %> 
+           <% }else{ %>  
+            </tr> 
+            
+           </div>
+        </div>
+       </div>
+      <form method="post">  
+     <div class="row" >               
+    <div class="md-form">
+     <i class="fa fa-user prefix grey-text"></i>
+     <input type="number" min="0" value="0" class="form-control" name="team_<%= game.id %>[a]">
+       <label for="orangeForm-name"> <%= game.team_a %></label>
+     </div>
+     <span class="vs">x</span> 
+     <div class="md-form">
+     <i class="fa fa-user prefix grey-text"></i>
+     <input type="number" min="0" value="0" class="form-control" name="team_<%= game.id %>[b]">
+     <label for="orangeForm-name"> <%= game.team_b %></label>
+   </div>
+  <div class="text-center">
+   <button class="btn btn-outline-primary">Salvar Palpites<i class="fa fa-paper-plane-o ml-1"></i></button>
+   </div>
+    </form>
+</div>
+      <br>
+      <hr>
+    <% } %> 
+            
+    <% }) %>
+      </tbody>
+     </table>
+    </form>
+    <hr>
+    <% } %>
+    <% if(games.guess > 0){ %>
+      <table class="table table-striped">
+      <thead>
+      <tr>       
+      <th class="text-center"><h5>Comentários</h5></th>      
+      </tr>
+     </thead>
+     <tbody>
+       <tr>
+          <td>
+             <form> 
+             <p><h5 class=" mb-4"><i class="fa fa-user prefix grey-text"></i>  <%= user.name %></h5></p>
+              <div class="md-form">
+               <i class="fa fa-pencil prefix grey-text"></i>
+               <textarea type="text" class="md-textarea" style="height: 50px" name="comment" ></textarea>
+                <label for="form8">Seu Comentário</label>
+                </div>
+                  <div class="text-center">
+                 <button class="form-control btn btn-outline-primary">Salvar<i class="fa fa-paper-plane-o ml-1"></i></button>
+                </div>
+                </form>
+              </td>
+          </tr>
+         </tbody>
+     </table> 
+     <% } %>          
+        </div>
+    </section>  
+    <% include elements/footer %>

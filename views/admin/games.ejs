@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Futiba Club </title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/futiba-interno.css" rel="stylesheet">
+    <link href="/css/interface-projeto.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-light green fixed-top scrolling-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="/img-futiba-club/logo.png" height="30" alt="Futiba Club">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                    <% include ../elements/menu_itens %>
+                    
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="content">
+        <div class="container">
+    <div class="">
+        <h2>Criar Jogos</h2>
+    </div>
+     <hr>
+     <br>
+       <form class="row" method="post">               
+            <div class="md-form">
+                <i class="fa fa-user prefix grey-text"></i>
+                <input type="text" class="form-control" name="team_a">
+                <label for="orangeForm-name">Time A</label>
+            </div>
+
+            <div class="md-form">
+                    <i class="fa fa-user prefix grey-text"></i>
+                    <input type="text" class="form-control" name="team_b">
+                    <label for="orangeForm-name">Time B</label>
+            </div>
+            
+            <div class="text-center">
+                <button class="btn btn-outline-warning">Criar Jogo</button>
+            </div>
+        </form>
+        <br>
+        <form method="post" action="/admin/games/results">
+        <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="h5 text-center mb-4">Id</th>
+                        <th class="h5 text-center mb-4">Jogos</th>
+                        <th class="h5 text-center mb-4">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% games.forEach( game => { %> 
+                    <tr>
+                 <% if(game.result_a || game.result_b) { %>
+                     <th >
+                         <%= game.id %>
+                     </th>
+                    <td>
+                    <div class="match-summary w-container">
+                            <div class="team-a">
+                              <div class="team-name"> <%= game.team_a%></div><img class="team-badge" height="40" src="/images/escudos/logo1.png">
+                            </div>
+                            <% if(game.result_a) { %>
+                                <div class="match-result">
+                                <div class="text-block"><span class="score-team-a"><%= game.result_a %></span>
+                                </div>
+                                </div>
+                            <% } %>
+                             <span class="vs">x</span> 
+                             <% if(game.result_b) { %>
+                                <div class="match-result">
+                                <div class="text-block"><span class="score-team-b"> <%= game.result_b %></span>
+                                </div>
+                                </div>
+                             <% } %>  
+                            <div class="team-b"><img class="team-badge" height="40" src="/images/escudos/logo4.png" >
+                              <div class="team-name"> <%= game.team_b %></div>
+                            </div>
+                        </div> 
+                     </td>
+                     <% } %>
+                         <td class="text-center mb-4" >
+                         <% if(game.result_a || game.result_b) { %>
+                            <a button class="btn btn-outline-danger" href="/admin/games/delete/<%= game.id %>"> 
+                             Excluir 
+                            </a>
+                            </button>
+                            <% } %>
+                        </td>
+                    </tr>
+                    </div>
+                </div>
+            </div>  
+            
+        <% if(!game.result_a && !game.result_b) { %>
+          <div class="">
+          <h2>Gerenciar Resultados</h2>
+         </div>
+         <hr>
+         <br>
+        <div class="row" > 
+            <form method="post">              
+            <div class="md-form">
+                <i class="fa fa-user prefix grey-text"></i>
+                <input type="number" min="0" value="0" class="form-control" name="team_<%= game.id %>[a]">
+                <label for="orangeForm-name"><%= game.team_a %></label>
+            </div>
+            <span class="vs">x</span> 
+            <div class="md-form">
+                    <i class="fa fa-user prefix grey-text"></i>
+                    <input type="number" min="0" value="0" class="form-control" name="team_<%= game.id %>[b]">
+                    <label for="orangeForm-name"><%= game.team_b %></label>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-outline-primary">Salvar resultado<i class="fa fa-paper-plane-o ml-1"></i></button>
+             </div>
+         </form>
+          </div>
+                <br> 
+                <hr>                
+          <% } %>
+        <% }) %> 
+            </tbody>
+        </table>
+      </div>
+     </form>
+                
+     </div>
+    </section>
+    
+    <% include ../elements/footer %>

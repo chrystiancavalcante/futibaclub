@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Futiba Club </title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/futiba-interno.css" rel="stylesheet">
+    <link href="/css/interface-projeto.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-light green fixed-top scrolling-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="/img-futiba-club/logo.png" height="30" alt="Futiba Club">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                    <% include elements/menu_itens %>
+                    
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="content">
+        <div class="container">
+            <div class="">
+                <h2>Classificação</h2>
+            </div>
+               <hr> 
+                       
+                <table class="table table-striped">
+                <thead>
+                        <% if(!classification) { %>
+                    <tr>
+                        <th class="h5">Id</th>
+                        <th class="h5 text-center mb-4">Nome</th>
+                        <th></th>
+                        <th class="h5 text-center mb-4">Pontos</th>
+                    </tr>
+                    <% } %>
+                </thead>
+                <tbody>
+                 <% classification.forEach( classification => { %> 
+                    <% if(classification > 0) { %>  
+                    <tr>
+                        <th scope="row"><h5><%= classification.id %></h5></th>
+                        
+                        <td class="text-center mb-4">
+                    <h5>   
+                        <%= classification.name  %>
+                    </h5>
+                        </td>
+                        <td class="text-block-3"> 
+                        </td>
+                        <td class="text-center mb-4">
+                        <h5>
+                         <%= classification.score %>
+                        </h5>
+                        </td>
+                       
+                    </tr>
+                     <% } %>
+                    <% }) %>   
+                 </tbody>
+                    </table>
+                    
+        </div>
+    </section>
+    
+    <% include elements/footer %>
