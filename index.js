@@ -34,12 +34,14 @@ app.use((req, res, next) =>{
         res.locals.user = false
     }
     next()
-})     
-
+})
+     
+connection.Open()
 app.use(account(connection))
 app.use('/admin', admin(connection))
 app.use('/groups', groups(connection))
 app.use('/classification', classification(connection))
+
 
 app.listen( process.env.PORT || 3000, err => {
     console.log('futiba club server running...')
