@@ -41,7 +41,7 @@ app.use('/admin', admin(connection))
 app.use('/groups', groups(connection))
 app.use('/classification', classification(connection))
 
-app.listen(3000, err => {
+app.listen( process.env.PORT || 3000, err => {
     console.log('futiba club server running...')
     })
  }
