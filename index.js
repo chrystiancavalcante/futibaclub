@@ -35,12 +35,14 @@ app.use((req, res, next) =>{
     }
     next()
 })
-     
+
 connection.Open()
 app.use(account(connection))
 app.use('/admin', admin(connection))
 app.use('/groups', groups(connection))
 app.use('/classification', classification(connection))
+connection.close()
+
 
 
 app.listen( process.env.PORT || 3000, err => {
