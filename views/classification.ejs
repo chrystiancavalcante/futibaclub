@@ -46,7 +46,7 @@
                        
                 <table class="table table-striped">
                 <thead>
-                        <% if(!classification) { %>
+                        <% if(classification.score) { %>
                     <tr>
                         <th class="h5">Id</th>
                         <th class="h5 text-center mb-4">Nome</th>
@@ -57,7 +57,7 @@
                 </thead>
                 <tbody>
                  <% classification.forEach( classification => { %> 
-                    <% if(classification > 0) { %>  
+                    <% if(classification.score) { %>  
                     <tr>
                         <th scope="row"><h5><%= classification.id %></h5></th>
                         

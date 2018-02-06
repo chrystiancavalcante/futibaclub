@@ -65,6 +65,7 @@
         <br>
         <form method="post" action="/admin/games/results">
         <table class="table table-striped">
+            <% if(games.result_a || games.result_b) { %>
                 <thead>
                     <tr>
                         <th class="h5 text-center mb-4">Id</th>
@@ -72,6 +73,7 @@
                         <th class="h5 text-center mb-4">Ações</th>
                     </tr>
                 </thead>
+                <% } %>
                 <tbody>
                 <% games.forEach( game => { %> 
                     <tr>

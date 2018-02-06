@@ -47,9 +47,9 @@ const init = connection => {
         .forEach( team => {
          const parts = team.split('_')
          const game = {
-             game_id: parts[1],
-             result_a: req.body[team].a,
-             result_b: req.body[team].b
+             game_id:  parts[1],
+             result_a:  req.body[team].a,
+             result_b:  req.body[team].b
          }
          guessings.push(game)    
         })

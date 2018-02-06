@@ -80,6 +80,7 @@
                     <hr>
                     <% }else{ %>
                     <p class="alert alert-info">Nenhum usuário pendente.</p>
+                    <br>
                     <% } %>
                     <% } %>
                 <% if(group.role === 'pending'|| !group.role ){ %>
@@ -87,16 +88,16 @@
                  <% }else{ %>
              <form method="post">  
             <table class="table table-striped">
+             <% if(games) { %>
             <thead>
-                <% if(games > 0) { %>
              <tr> 
              <th class="h5">Id</th>          
              <th class="h5 text-center mb-4">Palpites dos Jogos</th>
                   
               <th class="h5 text-center mb-4">Pontução</th>
               </tr>
-              <% } %>
               </thead>
+              <% } %>
               <tbody>     
               <% games.forEach( game => { %>
                 <div class="row w-row">
@@ -143,12 +144,12 @@
            <td class="h5 text-center mb-4">Em andamento</td>
            </div> 
            <% } %> 
-           <% }else{ %>  
-            </tr> 
-            
+           <% } %>  
+            </tr>  
            </div>
         </div>
        </div>
+       <% if(!game.guess_a || !game.guess_b) { %>
       <form method="post">  
      <div class="row" >               
     <div class="md-form">
@@ -163,15 +164,14 @@
      <label for="orangeForm-name"> <%= game.team_b %></label>
    </div>
   <div class="text-center">
-   <button class="btn btn-outline-primary">Salvar Palpites<i class="fa fa-paper-plane-o ml-1"></i></button>
+   <button class="btn btn-outline-primary">Salvar Palpite<i class="fa fa-paper-plane-o ml-1"></i></button>
    </div>
     </form>
 </div>
       <br>
       <hr>
     <% } %> 
-            
-    <% }) %>
+    <% }) %>     
       </tbody>
      </table>
     </form>
