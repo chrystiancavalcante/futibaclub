@@ -16,7 +16,6 @@
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "node.js": "^0.0.0",
-    "serve-favicon": "~2.4.5",
     "mysql2": "^1.5.1"
   }
 }
