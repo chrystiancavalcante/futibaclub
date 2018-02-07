@@ -63,7 +63,6 @@ app.post('/login', async(req, res) =>{
                 return crypted
             } 
             if(rows[0].passwd===(crypt('passwd'))){
-         
             const userDb = rows[0]
             const user = {
                 id: userDb.id,
