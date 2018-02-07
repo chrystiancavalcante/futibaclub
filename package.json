@@ -16,6 +16,7 @@
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "node.js": "^0.0.0",
-    "mysql2": "^1.5.1"
+    "mysql2": "^1.5.1",
+    "crypto":"^0.0.0"
   }
 }
