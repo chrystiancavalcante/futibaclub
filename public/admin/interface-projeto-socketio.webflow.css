@@ -1,4 +1,13 @@
+.navbar {
+  border-bottom: 4px solid #286901;
+  background-color: #3b9c00;
+}
 
+.brand {
+  margin-right: 0px;
+  padding-right: 0px;
+  box-shadow: 0 0 6px 0 #fff;
+}
 
 .title-live {
   position: static;
@@ -92,8 +101,8 @@
 }
 
 .team-name {
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 30px;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -135,7 +144,7 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-size: 25px;
+  font-size: 80px;
   font-weight: 700;
 }
 
@@ -197,12 +206,12 @@
 
 .text-block-2 {
   color: #929292;
-  font-size: 20px;
+  font-size: 10px;
 }
 
 .text-block-3 {
   color: #686868;
-  line-height: 20px;
+  line-height: 16px;
   font-weight: 700;
 }
 
@@ -409,6 +418,9 @@
   text-transform: uppercase;
 }
 
+.container {
+  padding: 20px;
+}
 
 .match {
   margin-bottom: 20px;
