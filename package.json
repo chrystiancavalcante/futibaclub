@@ -1,7 +1,8 @@
 {
   "name": "futibaclub",
   "version": "1.0.0",
-  "description": "",
+  "private": true,
+  "description": "Desenvolvido durante o Full Stack Academy",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -14,6 +15,7 @@
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
+    "node.js": "^0.0.0",
     "mysql2": "^1.5.1"
   }
 }
