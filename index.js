@@ -21,13 +21,13 @@ app.set('view engine', 'ejs')
 
 const init = async() => {
     const connection = await mysql.createConnection({ 
-       connectionLimit : 10 ,
+       connectionLimit : 100,
        adquirirTimeout : 30000 ,
         host:'us-cdbr-iron-east-05.cleardb.net',
         user:'bac7187b8e72e9',
         password: '593fdea1',
-        database:'heroku_da351e278e4b625' 
-        
+        database:'heroku_da351e278e4b625', 
+        debug: false
      })
 
 app.use((req, res, next) =>{
