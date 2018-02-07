@@ -27,7 +27,8 @@ const init = async() => {
         user:'bac7187b8e72e9',
         password: '593fdea1',
         database:'heroku_da351e278e4b625', 
-        debug: false
+        port: 3306,
+        ssl: true
      })
 
 app.use((req, res, next) =>{
