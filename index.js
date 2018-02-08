@@ -40,7 +40,7 @@ const init = async() => {
     }
     else
     {
-       connection.open()
+       connection.end()
        console.log("Connection established.")
            //queryDatabase()
     }   

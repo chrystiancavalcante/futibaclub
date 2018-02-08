@@ -1,10 +1,5 @@
 const express = require ('express')
 const app = express.Router()
-const fs = require('fs')
-const crypto = require ('crypto')
-const alg ='aes-256-ctr'
-const pwd = 'abcdefgsssans'
-
 
 const init = connection => {
 app.get('/', async(req, res)=>{
@@ -22,13 +17,11 @@ app.get('/login', (req, res) =>{
 app.post('/new-account', async(req, res) => {
     const [rows, fields] = await connection.execute('select * from users where email = ?', [req.body.email]) 
     if(rows.length === 0){
-        const { name, email, passwd } = req.body   
-        const cipher = crypto.createCipher(alg, pwd)
-        const crypted = cipher.update(passwd, 'utf8', 'hex')
+        const { name, email, passwd } = req.body  
         const [inserted, insertFields] = await connection.execute('insert into users (name, email, passwd, role) values(?,?,?,?)', [
         name,
         email,
-        crypted,
+        passwd,
         'user'
     ])
     const user = {
@@ -53,9 +46,8 @@ app.post('/login', async(req, res) =>{
     if(rows.length===0){
         res.render('login', { error: 'Usuário e/ou senha inválidos.'})
     }else{      
-             const cipher = crypto.createCipher(alg, pwd)
-             const crypted = cipher.update(req.body.passwd, 'utf8', 'hex')
-            if(rows[0].passwd===crypted){
+            
+            if(rows[0].passwd===req.body.passwd){
             const userDb = rows[0]
             const user = {
                 id: userDb.id,
