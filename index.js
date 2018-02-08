@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const mysql = require('mysql2/promise')
+const bluebird = require('bluebird')
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const account = require('./account')
@@ -25,11 +26,12 @@ connection = await mysql.createConnection(
         host:'us-cdbr-iron-east-05.cleardb.net',
         user:'bac7187b8e72e9',
         password: '593fdea1',
-        database:'heroku_da351e278e4b625', 
+        database:'heroku_da351e278e4b625',
+        Promise: bluebird,
         port: 3306,
         ssl: true
     })
-    
+
 app.use((req, res, next) =>{
     if(req.session.user){
         res.locals.user = req.session.user
