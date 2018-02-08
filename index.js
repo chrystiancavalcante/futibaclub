@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const mysql = require('mysql2')
+const mysql = require('mysql2/promise')
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const account = require('./account')
@@ -29,8 +29,7 @@ const config = {
      }
 
 const init = async() => {
- const connection = await mysql.createConnection(config)
-
+ connection = await mysql.createConnection(config)
  connection.connect(
     function (err) { 
     if (err) { 
@@ -42,7 +41,7 @@ const init = async() => {
     {
        connection.end()
        console.log("Connection established.")
-           //queryDatabase()
+        queryDatabase()
     }   
 })
 
