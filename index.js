@@ -29,7 +29,7 @@ connection = await mysql.createConnection(
         port: 3306,
         ssl: true
     })
-
+    
 app.use((req, res, next) =>{
     if(req.session.user){
         res.locals.user = req.session.user

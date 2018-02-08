@@ -25,7 +25,7 @@ app.post('/new-account', async(req, res) => {
         const { name, email, passwd } = req.body 
         const cipher = crypto.createCipher(alg, pwd)
         const crypted = cipher.update(passwd, 'utf8', 'hex')
-        const [inserted, insertFields] = await connection.execute('insert into users (name, email, passwd, role) values(?,?,?,?)', [
+        const [inserted, insertFields] = await connection.execute('INSERT INTO users (name, email, passwd, role) values(?,?,?,?)', [
         name,
         email,
         crypted,
