@@ -20,9 +20,9 @@ app.get('/login', (req, res) =>{
     res.render('login', {error: false})
 })
 app.post('/new-account', async(req, res) => {
-    const [rows, fields] = await connection.execute('select * from users where email = ?', [req.body.email]) 
+    const [rows, fields] = await connection.execute('SELECT * FROM users where email = ?', [req.body.email]) 
     if(rows.length === 0){
-        const { name, email, passwd } = req.body   
+        const { name, email, passwd } = req.body 
         const cipher = crypto.createCipher(alg, pwd)
         const crypted = cipher.update(passwd, 'utf8', 'hex')
         const [inserted, insertFields] = await connection.execute('insert into users (name, email, passwd, role) values(?,?,?,?)', [
@@ -49,13 +49,13 @@ app.post('/new-account', async(req, res) => {
     
 })
 app.post('/login', async(req, res) =>{
-    const [rows, fields] = await connection.execute('select * from users where email = ?', [req.body.email])
+    const [rows, fields] = await connection.execute('SELECT * FROM users where email = ?', [req.body.email])
     if(rows.length===0){
         res.render('login', { error: 'Usuário e/ou senha inválidos.'})
     }else{      
              const cipher = crypto.createCipher(alg, pwd)
              const crypted = cipher.update(req.body.passwd, 'utf8', 'hex')
-            if(rows[0].passwd===crypted){
+             if(rows[0].passwd===crypted){
             const userDb = rows[0]
             const user = {
                 id: userDb.id,

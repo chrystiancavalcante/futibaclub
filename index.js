@@ -19,31 +19,16 @@ app.use(session({
 
 app.set('view engine', 'ejs')
 
-const config = { 
+const init = async() => {
+connection = await mysql.createConnection(
+        {
         host:'us-cdbr-iron-east-05.cleardb.net',
         user:'bac7187b8e72e9',
         password: '593fdea1',
         database:'heroku_da351e278e4b625', 
         port: 3306,
         ssl: true
-     }
-
-const init = async() => {
- connection = await mysql.createConnection(config)
- connection.connect(
-    function (err) { 
-    if (err) { 
-        console.log("!!! Cannot connect !!! Error:")
-       
-        throw err
-    }
-    else
-    {
-       connection.end()
-       console.log("Connection established.")
-        queryDatabase()
-    }   
-})
+    })
 
 app.use((req, res, next) =>{
     if(req.session.user){
@@ -53,7 +38,6 @@ app.use((req, res, next) =>{
     }
     next()
 })
-
 
 app.use(account(connection))
 app.use('/admin', admin(connection))

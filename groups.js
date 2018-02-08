@@ -10,7 +10,7 @@ const init = connection => {
         }
     })
     app.get('/', async(req, res) => {
-        const [groups, fields] = await connection.execute('select groups.*, groups_users.role from groups left join groups_users on groups.id = groups_users.group_id and groups_users.user_id = ?',[
+        const [groups, fields] = await connection.execute('SELECT groups.*, groups_users.role FROM groups left join groups_users on groups.id = groups_users.group_id and groups_users.user_id = ?',[
             req.session.user.id
         ])
         res.render('groups', {
@@ -20,14 +20,14 @@ const init = connection => {
     })
     
     app.get('/:id', async(req, res) =>{
-        const [group] = await connection.execute('select groups.*, groups_users.role from groups left join groups_users on groups_users.group_id = groups.id and groups_users.user_id = ? where groups.id = ?',[
+        const [group] = await connection.execute('SELECT groups.*, groups_users.role FROM groups LEFT JOIN groups_users ON groups_users.group_id = groups.id and groups_users.user_id = ? WHERE groups.id = ?',[
             req.session.user.id,
             req.params.id
         ])
-        const [pendings] = await connection.execute('select groups_users.*, users.name from groups_users inner join users on groups_users.user_id = users.id and groups_users.group_id = ? and groups_users.role like "Pending"',[
+        const [pendings] = await connection.execute('SELECT groups_users.*, users.name FROM groups_users INNER JOIN users ON groups_users.user_id = users.id and groups_users.group_id = ? AND groups_users.role like "Pending"',[
             req.params.id
         ])
-        const [games] = await connection.execute('select games.*, guessings.result_a as guess_a, guessings.result_b as guess_b, guessings.score from games left join guessings on games.id = guessings.game_id and guessings.user_id = ? and guessings.group_user_id = ?',[
+        const [games] = await connection.execute('SELECT games.*, guessings.result_a as guess_a, guessings.result_b as guess_b, guessings.score FROM games LEFT JOIN guessings ON games.id = guessings.game_id AND guessings.user_id = ? AND guessings.group_user_id = ?',[
         req.session.user.id,
         req.params.id  
         ])
@@ -67,7 +67,7 @@ const init = connection => {
         res.redirect('/groups/'+req.params.id)
     })
     app.get('/:id/pending/:idGU/:op', async(req, res) =>{
-        const [group] = await connection.execute('select * from groups left join groups_users on groups_users.group_id = groups.id and groups_users.user_id = ? where groups.id = ?',[
+        const [group] = await connection.execute('SELECT * FROM groups LEFT JOIN groups_users ON groups_users.group_id = groups.id AND groups_users.user_id = ? WHERE groups.id = ?',[
             req.session.user.id,
             req.params.id
         ])
@@ -76,12 +76,12 @@ const init = connection => {
         }else{
        
         if(req.params.op === 'yes'){
-            await connection.execute('update groups_users set role = "user" where id = ? limit 1',[
+            await connection.execute('update groups_users set role = "user" WHERE id = ? limit 1',[
                 req.params.idGU
             ])
             res.redirect('/groups/'+req.params.id)
         }else{
-            await connection.execute('delete from groups_users where id = ? limit 1',[
+            await connection.execute('delete FROM groups_users WHERE id = ? limit 1',[
                 req.params.idGU
             ])
             res.redirect('/groups/'+req.params.id)
@@ -89,7 +89,7 @@ const init = connection => {
       }
     })
     app.get('/:id/join', async(req, res) =>{
-      const [rows, fields] = await connection.execute('select * from groups_users where user_id = ? and group_id = ?',[
+      const [rows, fields] = await connection.execute('SELECT * FROM groups_users WHERE user_id = ? AND group_id = ?',[
           req.session.user.id,
           req.params.id
       ])
@@ -116,7 +116,7 @@ const init = connection => {
         res.redirect('/groups')
     })
     app.get('/delete/:id', async(req, res) => {
-        await connection.execute('delete from groups where id = ? limit 1', [
+        await connection.execute('delete FROM groups where id = ? limit 1', [
             req.params.id
         ])
         res.redirect('/groups')
