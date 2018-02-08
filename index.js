@@ -29,7 +29,7 @@ const config = {
      }
 
 const init = async() => {
- const connection = await new mysql.createConnection(config)
+ const connection = await mysql.createConnection(config)
 
  connection.connect(
     function (err) { 
