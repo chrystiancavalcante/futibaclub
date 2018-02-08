@@ -23,13 +23,13 @@ app.set('view engine', 'ejs')
 const init = async() => {
 connection = await mysql.createConnection(
         {
+        wait_timeout: 28800,
+        interactive_timeout: 28800,    
         host:'us-cdbr-iron-east-05.cleardb.net',
         user:'bac7187b8e72e9',
         password: '593fdea1',
         database:'heroku_da351e278e4b625', 
-        wait_timeout: 28800,
-        interactive_timeout: 28800,
-        Promise: bluebird, 
+        Promise: bluebird,
         ssl: true
         
     })
