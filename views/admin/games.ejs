@@ -9,12 +9,14 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/cst/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/cst/bootstrap.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="/css/mdb.min.css" rel="stylesheet">
+    <link href="/css/cst/mdb.min.css" rel="stylesheet">
+    <link href="/css/cst/mdb.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/futiba-interno.css" rel="stylesheet">
+    <link href="/css/cst/style.css" rel="stylesheet">
+    <link href="/css/cst/futiba-interno.css" rel="stylesheet">
 </head>
 
 <body>
@@ -40,7 +42,7 @@
     <section class="content">
         <div class="container">
     <div class="">
-        <h2>Criar Jogos</h2>
+        <h2 class="featurette-heading">Cadastrar Jogo</h2>
     </div>
      <hr>
      <br>
@@ -58,7 +60,7 @@
             </div>
             
             <div class="text-center">
-                <button class="btn btn-outline-warning">Criar Jogo</button>
+                <button class="btn btn-outline-primary">Salvar</button>
             </div>
         </form>
         <br>
@@ -106,8 +108,8 @@
                      <% } %>
                          <td class="text-center mb-4" >
                          <% if(game.result_a || game.result_b) { %>
-                            <a button class="btn btn-outline-danger" href="/admin/games/delete/<%= game.id %>"> 
-                             Excluir 
+                            <a href="/admin/games/delete/<%= game.id %>"> 
+                                <img class="outline-warning" src="/images/delete.png" width="40" height="40"> 
                             </a>
                             </button>
                             <% } %>
@@ -119,7 +121,7 @@
             
         <% if(!game.result_a && !game.result_b) { %>
           <div class="">
-          <h2>Gerenciar Resultados</h2>
+          <h2 class="featurette-heading">Gerenciar Resultados</h2>
          </div>
          <hr>
          <br>

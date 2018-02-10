@@ -9,13 +9,13 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/cst/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="/css/mdb.min.css" rel="stylesheet">
+    <link href="/css/cst/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/futiba-interno.css" rel="stylesheet">
-    <link href="/css/interface-projeto.css" rel="stylesheet">
+    <link href="/css/cst/style.css" rel="stylesheet">
+    <link href="/css/cst/futiba-interno.css" rel="stylesheet">
+    <link href="/css/cst/interface-projeto.css" rel="stylesheet">
 </head>
 
 <body>
@@ -40,8 +40,14 @@
 
     <section class="content">
         <div class="container">
+                <div class="alert alert-info" role="alert">
+                        <h4 class="alert-heading">Bem vindo!</h4>
+                        <p>Chegou a hora de criar seu grupo de amigos ou entrar em um já existente para começar a fazer seus palpites para os jogos de sua preferência.</p>
+                        <p class="mb-0">Vamos lá ! vamos ver quem acerta mais? dê o seu palpite e desafie seus amigos. Boa Sorte!.</p>
+                </div>
+                <br>
             <div class="h5">
-                <h2>Grupos</h2>
+                <h2 class="featurette-heading">Criar Grupo</h2>
             </div>
             <hr>
             <br>
@@ -53,7 +59,9 @@
                     </div>
                     
                     <div class="text-center">
-                        <button class="btn btn-outline-warning">Criar Grupo</button>
+                        <button class="btn btn-outline-primary">
+                            Criar
+                        </button>
                     </div>
                 </form>
                 <hr>
@@ -61,10 +69,10 @@
                 <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th class="h5">Id</th>
-                                <th class="h5 text-center mb-4">Nome do grupo</th>
-                                <th class="h5 text-center mb-4"></th>
-                                <th class="h5 text-center mb-4">Ações</th>
+                                <th class="h4">#</th>
+                                <th class="h4 text-center mb-4">Nome do grupo</th>
+                                <th class="h4 text-center mb-4"></th>
+                                <th class="h4 text-center mb-4">Ações</th>
                                 
                             </tr>
                         </thead>
@@ -84,16 +92,15 @@
                                 </td>
                                <td class="text-center mb-4">
                                     <% if(group.role ==='owner'){ %>
-                                    <a button class="btn btn-outline-danger" href="/groups/delete/<%= group.id %>">
-                                     Excluir 
+                                    <a href="/groups/delete/<%= group.id %>">
+                                    <img class="outline-warning" src="/images/delete.png" width="40" height="40">
                                     </a>
-                                    </button>
                                     <% } %>
                                 </td>
                                 <% if(!group.role ){ %>
-                                 <td class="h5 text-center mb-4">
+                                 <td class="text-center mb-4">
                                   <a href="/groups/<%= group.id %>/join">
-                                     Solicitar Entrada
+                                    <img src="/images/ac.png" width="34" height="34"><h5>Solicitar Entrada</h5>
                                   </a>
                                 </td>
                                 <% } %>

@@ -27,7 +27,7 @@ const init = connection => {
         const [pendings] = await connection.execute('SELECT groups_users.*, users.name FROM groups_users INNER JOIN users ON groups_users.user_id = users.id and groups_users.group_id = ? AND groups_users.role like "Pending"',[
             req.params.id
         ])
-        const [games] = await connection.execute('SELECT games.*, guessings.result_a as guess_a, guessings.result_b as guess_b, guessings.score FROM games LEFT JOIN guessings ON games.id = guessings.game_id AND guessings.user_id = ? AND guessings.group_user_id = ?',[
+        const [games] = await connection.execute('SELECT games.*, guessings.result_a as guess_a, guessings.result_b as guess_b, guessings.score FROM games LEFT JOIN guessings ON games.id = guessings.game_id AND guessings.user_id = ? AND guessings.groups_user_id = ?',[
         req.session.user.id,
         req.params.id  
         ])

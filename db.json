@@ -1,0 +1,224 @@
+{
+  "matches": [
+    {
+      "id": "1",
+      "turn": 1,
+      "bids": [
+        {
+          "time": "52",
+          "half": "2",
+          "team": "CAM",
+          "subject": "O goleiro espalmou pra fora",
+          "description": "UUUUhhhhhaaaallll !!!!"
+        },
+        {
+          "time": "46",
+          "half": "2",
+          "team": "FLA",
+          "subject": "QUAAASE",
+          "description": "Na trave .. Uuuufa!!!"
+        },
+        {
+          "time": "45",
+          "half": "2",
+          "team": "CAM",
+          "subject": "inacreditável",
+          "description": "que golaço do CAM muito bom o desempenho dos jogadores"
+        },
+        {
+          "time": "44",
+          "half": "2",
+          "team": "CAM",
+          "subject": "Que virada !!!",
+          "description": "Nos últimos minutos do segundo tempo.."
+        },
+        {
+          "time": 43,
+          "half": 1,
+          "team": "Flamengo",
+          "subject": "Para Fora",
+          "description": "Mais uma excelente oportunidade para o Flamengo. Berrío. Mais oportunidade para o Flamengo. Berrío. Mais uma oportunidade para o Flamengo. Berrío. Mais uma excelente oportunidade para o Flamengo. Berrío."
+        },
+        {
+          "time": 42,
+          "half": 1,
+          "team": "Flamengo",
+          "subject": "Para Fora",
+          "description": "Mais uma excelente oportunidade para o Flamengo. Berrío. Mais oportunidade para o Flamengo. Berrío. Mais uma oportunidade para o Flamengo. Berrío. Mais uma excelente oportunidade para o Flamengo. Berrío."
+        }
+      ],
+      "team-a": {
+        "name": "Flamengo",
+        "abbr": "FLA",
+        "badge": "logo1.png",
+        "supporters": 341,
+        "score": 1,
+        "players": [
+          {
+            "name": "Alex Muralha",
+            "pos": "GOL"
+          },
+          {
+            "name": "Pará",
+            "pos": "LAD"
+          },
+          {
+            "name": "Réver",
+            "pos": "ZAD"
+          },
+          {
+            "name": "Rafael Vaz",
+            "pos": "ZAE"
+          }
+        ]
+      },
+      "team-b": {
+        "name": "Atlético-MG",
+        "abbr": "CAM",
+        "badge": "logo2.png",
+        "supporters": 559,
+        "score": 3,
+        "players": [
+          {
+            "name": "Alex Muralha",
+            "pos": "GOL"
+          },
+          {
+            "name": "Pará",
+            "pos": "LAD"
+          },
+          {
+            "name": "Réver",
+            "pos": "ZAD"
+          },
+          {
+            "name": "Rafael Vaz",
+            "pos": "ZAE"
+          }
+        ]
+      },
+      "championship": {
+        "name": "Campeonato Brasileiro",
+        "abbr": "Camp. Bras."
+      },
+      "videos": [
+        "gyCFuP3rM2w",
+        "gyCFuP3rM2w"
+      ],
+      "porcentagem": {
+        "teamA": "38",
+        "teamB": "62"
+      }
+    },
+    {
+      "id": "1",
+      "turn": 1,
+      "bids": [
+        {
+          "time": "48",
+          "half": "2",
+          "team": "PAL",
+          "subject": "O Goleiro agarrou !!!!",
+          "description": "O goleiro agarrouu..."
+        },
+        {
+          "time": "47",
+          "half": "2",
+          "team": "CRU",
+          "subject": "Gooolll!!!!",
+          "description": "Gooolll !!!!! inacreditável, 47 do segundo tempo !"
+        },
+        {
+          "time": "46",
+          "half": "2",
+          "team": "CRU",
+          "subject": "Na trave",
+          "description": "No último lance, que sufoco!!!!"
+        },
+        {
+          "time": "45",
+          "half": "2",
+          "team": "pal",
+          "subject": "quasee",
+          "description": "uuuufa"
+        },
+        {
+          "time": 43,
+          "half": 1,
+          "team": "Flamengo",
+          "subject": "Para Fora",
+          "description": "Mais uma excelente oportunidade para o Flamengo. Berrío. Mais oportunidade para o Flamengo. Berrío. Mais uma oportunidade para o Flamengo. Berrío. Mais uma excelente oportunidade para o Flamengo. Berrío."
+        },
+        {
+          "time": 42,
+          "half": 1,
+          "team": "Flamengo",
+          "subject": "Para Fora",
+          "description": "Mais uma excelente oportunidade para o Flamengo. Berrío. Mais oportunidade para o Flamengo. Berrío. Mais uma oportunidade para o Flamengo. Berrío. Mais uma excelente oportunidade para o Flamengo. Berrío."
+        }
+      ],
+      "team-a": {
+        "name": "Palmeiras",
+        "abbr": "PAL",
+        "badge": "logo1.png",
+        "supporters": 234,
+        "score": 0,
+        "players": [
+          {
+            "name": "Alex Muralha",
+            "pos": "GOL"
+          },
+          {
+            "name": "Pará",
+            "pos": "LAD"
+          },
+          {
+            "name": "Réver",
+            "pos": "ZAD"
+          },
+          {
+            "name": "Rafael Vaz",
+            "pos": "ZAE"
+          }
+        ]
+      },
+      "team-b": {
+        "name": "Cruzeiro-MG",
+        "abbr": "CRU",
+        "badge": "logo2.png",
+        "supporters": 260,
+        "score": 2,
+        "players": [
+          {
+            "name": "Alex Muralha",
+            "pos": "GOL"
+          },
+          {
+            "name": "Pará",
+            "pos": "LAD"
+          },
+          {
+            "name": "Réver",
+            "pos": "ZAD"
+          },
+          {
+            "name": "Rafael Vaz",
+            "pos": "ZAE"
+          }
+        ]
+      },
+      "championship": {
+        "name": "Campeonato Brasileiro",
+        "abbr": "Camp. Bras."
+      },
+      "videos": [
+        "gyCFuP3rM2w",
+        "tegddgdyhd"
+      ],
+      "porcentagem": {
+        "teamA": "47",
+        "teamB": "53"
+      }
+    }
+  ]
+}

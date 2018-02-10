@@ -9,13 +9,13 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/cst/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="/css/mdb.min.css" rel="stylesheet">
+    <link href="/css/cst/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/futiba-interno.css" rel="stylesheet">
-    <link href="/css/interface-projeto.css" rel="stylesheet">
+    <link href="/css/cst/style.css" rel="stylesheet">
+    <link href="/css/cst/futiba-interno.css" rel="stylesheet">
+    <link href="/css/cst/interface-projeto.css" rel="stylesheet">
 </head>
 
 <body>
@@ -51,26 +51,31 @@
                         <thead>
                             
                             <tr>
-                                <th class="h5">Id</th>
-                                <th class="text-center mb-4"><h5>Grupos</h5></th>
-                                <th class="text-center mb-4"><h5></h5></th>
-                                <th class="text-center mb-4"><h5>Ações</h5></th>
+                                <th class="h5">#</th>
+                                <th class="h5 text-center mb-4">Grupos</th>
+                                <th class="h5 text-center mb-4"></th>
+                                <th class="h5 text-center mb-4">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                        <% pendings.forEach( user => { %>
                      <tr>
-                        <th class="h5" scope="row"><%= user.id %></th>
+                        <th class="h5" scope="row"><h5><%= user.id %></h5></th>
                         <td class="h5 text-center mb-4">
-                            <a href="/groups/<%= group.id %>">
+                            <a href="/groups/<%= group.id %>"><h5>
                             <%= user.name %>
+                        </h5>
                         </a>
                         </td>
-                        <td class="h5 text-center mb-4"><%= user.role %> </td>
+                        <td class="text-center mb-4"><h5><%= user.role %></h5></td>
                           <td>
                         <div class="text-center mb-4">
-                            <a button class="btn btn-outline-primary" href="/groups/<%= group.id %>/pending/<%= user.id %>/yes">Permitir</a></button>
-                            <a button class="btn btn-outline-danger" href="/groups/<%= group.id %>/pending/<%= user.id %>/no">Negar</a></button>
+                            <a href="/groups/<%= group.id %>/pending/<%= user.id %>/yes">
+                                <img src="/images/ac.png" width="34" height="34">
+                            </a>
+                            <a href="/groups/<%= group.id %>/pending/<%= user.id %>/no"> 
+                                <img src="/images/ng.png" width="34" height="34">
+                            </a>
                         </div>
                            </td>
                     </tr>
@@ -88,10 +93,10 @@
                  <% }else{ %>
              <form method="post">  
             <table class="table table-striped">
-             <% if(games) { %>
+             <% if(games.guess_a || games.guess_b) { %>
             <thead>
              <tr> 
-             <th class="h5">Id</th>          
+             <th class="h5">#</th>          
              <th class="h5 text-center mb-4">Palpites dos Jogos</th>
                   
               <th class="h5 text-center mb-4">Pontução</th>
@@ -176,33 +181,7 @@
      </table>
     </form>
     <hr>
-    <% } %>
-    <% if(games.guess > 0){ %>
-      <table class="table table-striped">
-      <thead>
-      <tr>       
-      <th class="text-center"><h5>Comentários</h5></th>      
-      </tr>
-     </thead>
-     <tbody>
-       <tr>
-          <td>
-             <form> 
-             <p><h5 class=" mb-4"><i class="fa fa-user prefix grey-text"></i>  <%= user.name %></h5></p>
-              <div class="md-form">
-               <i class="fa fa-pencil prefix grey-text"></i>
-               <textarea type="text" class="md-textarea" style="height: 50px" name="comment" ></textarea>
-                <label for="form8">Seu Comentário</label>
-                </div>
-                  <div class="text-center">
-                 <button class="form-control btn btn-outline-primary">Salvar<i class="fa fa-paper-plane-o ml-1"></i></button>
-                </div>
-                </form>
-              </td>
-          </tr>
-         </tbody>
-     </table> 
-     <% } %>          
+    <% } %>    
         </div>
     </section>  
     <% include elements/footer %>
