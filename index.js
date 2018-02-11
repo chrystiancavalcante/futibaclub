@@ -36,13 +36,14 @@ app.set('view engine', 'ejs')
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(cookieParser())
-app.use(bodyParser.urlencoded({ extended: true}))
+app.use(bodyParser.urlencoded({ extended: false}))
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/placar', placar)
 app.use('/admin_placar', admin_placar)
 
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true}))
 app.use(session({
     secret: 'softwarepro',
     resave: true,
@@ -51,12 +52,13 @@ app.use(session({
 
 const init = async() => {
 connection = await mysql.createConnection(
-        {  
+        { 
+
           Promise: bluebird,
-          host:'us-cdbr-iron-east-05.cleardb.net',
-          user:'bac7187b8e72e9',
-          password: '593fdea1',
-          database:'heroku_da351e278e4b625'
+          host:'localhost',
+          user:'root',
+          password: '',
+          database:'da351e278e4b625'
           
         })
 
@@ -90,12 +92,11 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500)
   res.render('error')
-})
+  })
 
 var port = normalizePort(process.env.PORT || '3000')
 console.log('FutibaClub rodando na porta 3000')
 app.set('port', port)
-
 /**
  * Create HTTP server.
  */
@@ -104,15 +105,12 @@ app.io.attach(server)
 /**
  * Listen on provided port, on all network interfaces.
  */
-
 server.listen(port)
 server.on('error', onError)
 server.on('listening', onListening)
-
 /**
  * Normalize a port into a number, string, or false.
  */
-
 function normalizePort(val) {
   var port = parseInt(val, 10)
 
@@ -128,11 +126,9 @@ function normalizePort(val) {
 
   return false
 }
-
 /**
  * Event listener for HTTP server "error" event.
  */
-
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
@@ -156,21 +152,18 @@ function onError(error) {
       throw error
   }
 }
-
 /**
  * Event listener for HTTP server "listening" event.
  */
-
 function onListening() {
   var addr = server.address()
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port
   debug('Listening on ' + bind)
-}
+   }
 
 }
-
 
 init()
 

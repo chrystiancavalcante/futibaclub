@@ -11,14 +11,17 @@ app.get('/', async(req, res)=>{
     
     res.render('home')
 })
+
 app.get('/logout',(req, res) =>{
     req.session.destroy( err => {
         res.redirect('/')
     })
 })
+
 app.get('/login', (req, res) =>{
     res.render('login', {error: false})
 })
+
 app.post('/new-account', async(req, res) => {
     const [rows, fields] = await connection.execute('SELECT * FROM users where email = ?', [req.body.email]) 
     if(rows.length === 0){
@@ -48,6 +51,7 @@ app.post('/new-account', async(req, res) => {
     } 
     
 })
+
 app.post('/login', async(req, res) =>{
     const [rows, fields] = await connection.execute('SELECT * FROM users where email = ?', [req.body.email])
     if(rows.length===0){
@@ -70,6 +74,7 @@ app.post('/login', async(req, res) =>{
         }
     }   
 })
+
 app.get('/new-account',(req, res)=>{
     res.render('new-account', {error: false})
 })
@@ -77,4 +82,5 @@ app.get('/new-account',(req, res)=>{
 return app
 
 }
+
 module.exports = init
