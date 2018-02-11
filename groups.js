@@ -54,7 +54,7 @@ const init = connection => {
          guessings.push(game)    
         })
         const batch = guessings.map( guess => {
-         return connection.execute('insert into guessings (result_a, result_b, game_id, group_user_id, user_id) values (?,?,?,?,?)',[
+         return connection.execute('insert into guessings (result_a, result_b, game_id, groups_user_id, user_id) values (?,?,?,?,?)',[
             guess.result_a,
            guess.result_b,
            guess.game_id,

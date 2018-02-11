@@ -61,42 +61,14 @@
                     <div class="text-center">
                         <button class="btn btn-deep-orange">Entrar</button>
                     </div>
+                    <br>
+                    <hr>
+                    <p class="h5 text-center mb-4">
+                        <a href="/new-account">Criar Conta</a>
+                    </p>
                 </form>
                 </div>
              </div>
-             <% if(!user){ %>
-             <div class="card col">
-                <div class="card-body">
-                    <form class="col" method="post" action="new-account" >
-                        <p class="h5 text-center mb-4">Criar uma conta</p>
-                    
-                        <div class="md-form">
-                            <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" id="orangeForm-name" class="form-control">
-                            <label for="orangeForm-name">Seu nome</label>
-                        </div>
-                        <div class="md-form">
-                            <i class="fa fa-envelope prefix grey-text"></i>
-                            <input type="text" id="orangeForm-email" class="form-control">
-                            <label for="orangeForm-email">Seu e-mail</label>
-                            <% if(error){ %>
-                                <p>Email já está em uso.</p>     
-                                     <% } %>
-                        </div>
-                    
-                        <div class="md-form">
-                            <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" id="orangeForm-pass" class="form-control">
-                            <label for="orangeForm-pass">Sua senha</label>
-                        </div>
-                    
-                        <div class="text-center">
-                            <button class="btn btn-deep-orange">Criar conta</button>
-                        </div>
-                    </form>
-                 </div>
-              </div>
-              <% } %>
             </div>
          </div>
     </section>

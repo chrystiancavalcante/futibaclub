@@ -93,7 +93,7 @@
                  <% }else{ %>
              <form method="post">  
             <table class="table table-striped">
-             <% if(games.guess_a || games.guess_b) { %>
+             <% if(games.guess_a || games.guess_b !== 0) { %>
             <thead>
              <tr> 
              <th class="h5">#</th>          
@@ -142,7 +142,7 @@
               </td>
            <% if(game.result_a || game.result_b) { %>
             <div>
-           <td class="h5 text-center mb-4"><%= game.score %></td>
+           <td class="text-center mb-4"><h4><%= game.score %></h4></td>
             </div>
             <% }else{ %>
            <div>    
@@ -169,7 +169,9 @@
      <label for="orangeForm-name"> <%= game.team_b %></label>
    </div>
   <div class="text-center">
-   <button class="btn btn-outline-primary">Salvar Palpite<i class="fa fa-paper-plane-o ml-1"></i></button>
+   <button class="">
+        <img class="outline-warning" src="/images/certo.png" width="30" height="28">   
+   </button>
    </div>
     </form>
 </div>

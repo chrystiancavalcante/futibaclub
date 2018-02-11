@@ -60,16 +60,22 @@
             </div>
             
             <div class="text-center">
-                <button class="btn btn-outline-primary">Salvar</button>
+                <button class="">
+                        <img class="outline-warning" src="/images/certo.png" width="30" height="28">
+                </button>
             </div>
         </form>
         <br>
         <form method="post" action="/admin/games/results">
         <table class="table table-striped">
-            <% if(games.result_a || games.result_b) { %>
+            <% if(games.result_a || games.result_b !== 0) { %>
+                <div class="">
+                        <h2 class="featurette-heading">Resultado dos Jogos</h2>
+                    </div>
+                    <hr>
                 <thead>
                     <tr>
-                        <th class="h5 text-center mb-4">Id</th>
+                        <th class="h5">#</th>
                         <th class="h5 text-center mb-4">Jogos</th>
                         <th class="h5 text-center mb-4">Ações</th>
                     </tr>
@@ -111,7 +117,6 @@
                             <a href="/admin/games/delete/<%= game.id %>"> 
                                 <img class="outline-warning" src="/images/delete.png" width="40" height="40"> 
                             </a>
-                            </button>
                             <% } %>
                         </td>
                     </tr>

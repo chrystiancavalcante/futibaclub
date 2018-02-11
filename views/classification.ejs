@@ -39,17 +39,24 @@
     </header>
     <section class="content">
         <div class="container">
+            <% if(!classification === 0) { %>
+                <div class="alert alert-info" role="alert">
+                        <h4 class="alert-heading">Ainda não há classificação!</h4>
+                        <p>Chegou a hora de criar seu grupo de amigos ou entrar em um já existente para começar a fazer seus palpites para os jogos de sua preferência.</p>
+                        <p class="mb-0">Vamos lá ! vamos ver quem acerta mais? Dê o seu palpite e desafie seus amigos. Boa Sorte!.</p>
+                </div>
+                <% } %>
             <div class="">
-                <h2 class="h2-style">Classificação</h2>
+                <h2>Classificação</h2>
             </div>
                <hr> 
                        
                 <table class="table table-striped">
                 <thead>
-                        <% if(classification.score) { %>
+                        <% if(classification !== 0) { %>
                     <tr>
-                        <th class="h5">Id</th>
-                        <th class="h5 text-center mb-4">Nome</th>
+                        <th class="h5">#</th>
+                        <th class="h5 text-center mb-4">Participantes</th>
                         <th></th>
                         <th class="h5 text-center mb-4">Pontos</th>
                     </tr>
@@ -59,19 +66,19 @@
                  <% classification.forEach( classification => { %> 
                     <% if(classification.score) { %>  
                     <tr>
-                        <th scope="row"><h5><%= classification.id %></h5></th>
+                        <th scope="row"><h4><%= classification.id %></h4></th>
                         
                         <td class="text-center mb-4">
-                    <h5>   
+                    <h4>   
                         <%= classification.name  %>
-                    </h5>
+                    </h4>
                         </td>
                         <td class="text-block-3"> 
                         </td>
                         <td class="text-center mb-4">
-                        <h5>
+                        <h4>
                          <%= classification.score %>
-                        </h5>
+                        </h4>
                         </td>
                        
                     </tr>

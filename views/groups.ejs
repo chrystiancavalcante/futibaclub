@@ -41,9 +41,9 @@
     <section class="content">
         <div class="container">
                 <div class="alert alert-info" role="alert">
-                        <h4 class="alert-heading">Bem vindo!</h4>
+                        <h5 class="alert-heading">Bem vindo!</h5>
                         <p>Chegou a hora de criar seu grupo de amigos ou entrar em um já existente para começar a fazer seus palpites para os jogos de sua preferência.</p>
-                        <p class="mb-0">Vamos lá ! vamos ver quem acerta mais? dê o seu palpite e desafie seus amigos. Boa Sorte!.</p>
+                        <p class="mb-0">Vamos lá ! vamos ver quem acerta mais? Dê o seu palpite e desafie seus amigos. Boa Sorte!.</p>
                 </div>
                 <br>
             <div class="h5">
@@ -59,8 +59,8 @@
                     </div>
                     
                     <div class="text-center">
-                        <button class="btn btn-outline-primary">
-                            Criar
+                        <button class="">
+                         <img class="outline-warning" src="/images/certo.png" width="30" height="28">
                         </button>
                     </div>
                 </form>
@@ -69,26 +69,26 @@
                 <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th class="h4">#</th>
-                                <th class="h4 text-center mb-4">Nome do grupo</th>
-                                <th class="h4 text-center mb-4"></th>
-                                <th class="h4 text-center mb-4">Ações</th>
+                                <th class="h5">#</th>
+                                <th class="h5 text-center mb-4">Nome do grupo</th>
+                                <th class="h5 text-center mb-4"></th>
+                                <th class="h5 text-center mb-4">Ações</th>
                                 
                             </tr>
                         </thead>
                         <tbody>
                             <% groups.forEach( group => { %>
                             <tr>
-                                <th scope=""><%= group.id %></th>
+                                <th scope=""><h4><%= group.id %></h4></th>
                                 <td class="text-center mb-4">
-                                    <a href="/groups/<%= group.id %>"><h5>
+                                    <a href="/groups/<%= group.id %>"><h4>
                                     <%= group.name %>
-                                </h5>
+                                </h4>
                                     </a>
                                 </td>
-                                <td class="text-center mb-4"><h5>
+                                <td class="text-center mb-4"><h4>
                                     <%= group.role %>
-                                </h5>
+                                </h4>
                                 </td>
                                <td class="text-center mb-4">
                                     <% if(group.role ==='owner'){ %>
