@@ -53,10 +53,11 @@ const init = async() => {
 connection = await mysql.createConnection(
         {  
           Promise: bluebird,
-          host:'127.0.0.1',
-          user:'root',
-          password: 'root',
-          database:'heroku_8c9e6d631dc2873', 
+          host:'us-cdbr-iron-east-05.cleardb.net',
+          user:'bac7187b8e72e9',
+          password: '593fdea1',
+          database:'heroku_da351e278e4b625', 
+          ssl: true 
           
         })
 
