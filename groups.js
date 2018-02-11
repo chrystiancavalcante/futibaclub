@@ -4,7 +4,7 @@ const app = express.Router()
 const init = connection => {
     app.use((req, res, next) =>{
         if(!req.session.user ){
-            res.redirect('/')
+            res.redirect('/login')
         }else{
             next()
         }
