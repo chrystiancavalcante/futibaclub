@@ -52,13 +52,13 @@ app.use(session({
 const init = async() => {
 connection = await mysql.createConnection(
         {  
+          Promise: bluebird,
           host:'us-cdbr-iron-east-05.cleardb.net',
           user:'bac7187b8e72e9',
           password: '593fdea1',
           database:'heroku_da351e278e4b625', 
-          Promise: bluebird,
-          ssl: true
-    })
+          
+        })
 
 app.use((req, res, next) =>{
     if(req.session.user){
@@ -76,10 +76,10 @@ app.use('/classification', classification(connection))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+  var err = new Error('Not Found')
+  err.status = 404
+  next(err)
+})
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -88,33 +88,33 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+  res.status(err.status || 500)
+  res.render('error')
+})
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '3000')
 console.log('FutibaClub rodando na porta 3000')
-app.set('port', port);
+app.set('port', port)
 
 /**
  * Create HTTP server.
  */
-var server = http.createServer(app);
-app.io.attach(server);
+var server = http.createServer(app)
+app.io.attach(server)
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+server.listen(port)
+server.on('error', onError)
+server.on('listening', onListening)
 
 /**
  * Normalize a port into a number, string, or false.
  */
 
 function normalizePort(val) {
-  var port = parseInt(val, 10);
+  var port = parseInt(val, 10)
 
   if (isNaN(port)) {
     // named pipe
@@ -123,10 +123,10 @@ function normalizePort(val) {
 
   if (port >= 0) {
     // port number
-    return port;
+    return port
   }
 
-  return false;
+  return false
 }
 
 /**
@@ -140,20 +140,20 @@ function onError(error) {
 
   var bind = typeof port === 'string'
     ? 'Pipe ' + port
-    : 'Port ' + port;
+    : 'Port ' + port
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
+      console.error(bind + ' requires elevated privileges')
       process.exit(1);
-      break;
+      break
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
+      console.error(bind + ' is already in use')
+      process.exit(1)
+      break
     default:
-      throw error;
+      throw error
   }
 }
 
@@ -162,11 +162,11 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = server.address();
+  var addr = server.address()
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+    : 'port ' + addr.port
+  debug('Listening on ' + bind)
 }
 
 }
