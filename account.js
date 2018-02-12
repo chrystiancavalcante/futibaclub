@@ -25,7 +25,7 @@ app.get('/login', (req, res) =>{
 app.post('/new-account', async(req, res) => {
     const [rows, fields] = await connection.execute('SELECT * FROM users where email = ?', [req.body.email]) 
     if(rows.length === 0){
-        const { name, email, passwd } = req.body 
+        const { name, email, passwd, role } = req.body 
         const cipher = crypto.createCipher(alg, pwd)
         const crypted = cipher.update(passwd, 'utf8', 'hex')
         const [inserted, insertFields] = await connection.execute('INSERT INTO users (name, email, passwd, role) values(?,?,?,?)', [
