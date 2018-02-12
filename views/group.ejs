@@ -60,21 +60,21 @@
                         <tbody>
                        <% pendings.forEach( user => { %>
                      <tr>
-                        <th class="h5" scope="row"><h5><%= user.id %></h5></th>
-                        <td class="h5 text-center mb-4">
-                            <a href="/groups/<%= group.id %>"><h5>
+                        <th class="" scope="row"><h4><%= user.id %></h4></th>
+                        <td class=" text-center mb-4">
+                            <a href="/groups/<%= group.id %>"><h4>
                             <%= user.name %>
-                        </h5>
+                        </h4>
                         </a>
                         </td>
-                        <td class="text-center mb-4"><h5><%= user.role %></h5></td>
+                        <td class="text-center mb-4"><h4><%= user.role %></h4></td>
                           <td>
                         <div class="text-center mb-4">
                             <a href="/groups/<%= group.id %>/pending/<%= user.id %>/yes">
-                                <img src="/images/ac.png" width="34" height="34">
+                                <img src="/images/positivo.png" width="34" height="34">
                             </a>
                             <a href="/groups/<%= group.id %>/pending/<%= user.id %>/no"> 
-                                <img src="/images/ng.png" width="34" height="34">
+                                <img src="/images/negativo.png" width="34" height="34">
                             </a>
                         </div>
                            </td>
@@ -93,7 +93,7 @@
                  <% }else{ %>
              <form method="post">  
             <table class="table table-striped">
-             <% if(games.guess_a || games.guess_b !== 0) { %>
+             <% if(games.guess_a || games.guess_b) { %>
             <thead>
              <tr> 
              <th class="h5">#</th>          
