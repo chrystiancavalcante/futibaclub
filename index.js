@@ -28,7 +28,6 @@ app.io = require('socket.io')()
 var placar = require('./routes/index')({io: app.io, db});
 var admin_placar = require('./routes/admin')({io: app.io, db});
 
-
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
@@ -81,7 +80,7 @@ app.use(function(req, res, next) {
 
 app.use(function(err, req, res, next) {
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get('env') === 'development' ? err : {}
 
   res.status(err.status || 500)
   res.render('error')
