@@ -55,10 +55,10 @@ connection = await mysql.createConnection(
         { 
 
           Promise: bluebird,
-          host:'us-cdbr-iron-east-05.cleardb.net',
-          user:'bac7187b8e72e9',
-          password: '593fdea1',
-          database:'heroku_da351e278e4b625',  
+          host:'localhost',
+          user:'root',
+          password: 'root',
+          database:'da351e278e4b625',  
           
         })
 
