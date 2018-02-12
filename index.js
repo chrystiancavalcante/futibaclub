@@ -36,14 +36,13 @@ app.set('view engine', 'ejs')
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(cookieParser())
-app.use(bodyParser.urlencoded({ extended: false}))
+app.use(bodyParser.urlencoded({ extended: true}))
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/placar', placar)
 app.use('/admin_placar', admin_placar)
 
 app.use(express.static('public'))
-app.use(bodyParser.urlencoded({ extended: true}))
 app.use(session({
     secret: 'softwarepro',
     resave: true,
@@ -54,7 +53,6 @@ const init = async() => {
 connection = await mysql.createConnection(
         { 
 
-          Promise: bluebird,
           host:'us-cdbr-iron-east-05.cleardb.net',
           user:'bac7187b8e72e9',
           password: '593fdea1',

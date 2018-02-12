@@ -93,7 +93,6 @@
                  <% }else{ %>
              <form method="post">  
             <table class="table table-striped">
-             <% if(games.guess_a || games.guess_b) { %>
             <thead>
              <tr> 
              <th class="h5">#</th>          
@@ -102,7 +101,6 @@
               <th class="h5 text-center mb-4">Pontução</th>
               </tr>
               </thead>
-              <% } %>
               <tbody>     
               <% games.forEach( game => { %>
                 <div class="row w-row">
