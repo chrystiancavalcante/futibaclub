@@ -22,7 +22,6 @@ const db = low(adapter)
 const defaultData = require('./data/default-data.json')
 db.defaults(defaultData).write()
 
-
 const app = express();
 app.io = require('socket.io')()
 
@@ -36,13 +35,13 @@ app.set('view engine', 'ejs')
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(cookieParser())
-app.use(bodyParser.urlencoded({ extended: true}))
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/placar', placar)
 app.use('/admin_placar', admin_placar)
 
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true}))
 app.use(session({
     secret: 'softwarepro',
     resave: true,
@@ -74,20 +73,16 @@ app.use('/admin', admin(connection))
 app.use('/groups', groups(connection))
 app.use('/classification', classification(connection))
 
-// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found')
   err.status = 404
   next(err)
 })
 
-// error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
   res.status(err.status || 500)
   res.render('error')
   })
@@ -95,38 +90,30 @@ app.use(function(err, req, res, next) {
 var port = normalizePort(process.env.PORT || '3000')
 console.log('FutibaClub rodando na porta 3000')
 app.set('port', port)
-/**
- * Create HTTP server.
- */
+
 var server = http.createServer(app)
 app.io.attach(server)
-/**
- * Listen on provided port, on all network interfaces.
- */
+
 server.listen(port)
 server.on('error', onError)
 server.on('listening', onListening)
-/**
- * Normalize a port into a number, string, or false.
- */
+
 function normalizePort(val) {
   var port = parseInt(val, 10)
 
   if (isNaN(port)) {
-    // named pipe
+   
     return val;
   }
 
   if (port >= 0) {
-    // port number
+   
     return port
   }
 
   return false
 }
-/**
- * Event listener for HTTP server "error" event.
- */
+
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
@@ -136,7 +123,6 @@ function onError(error) {
     ? 'Pipe ' + port
     : 'Port ' + port
 
-  // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges')
@@ -150,9 +136,7 @@ function onError(error) {
       throw error
   }
 }
-/**
- * Event listener for HTTP server "listening" event.
- */
+
 function onListening() {
   var addr = server.address()
   var bind = typeof addr === 'string'
