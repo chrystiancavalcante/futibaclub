@@ -51,7 +51,8 @@ const init = connection => {
              result_a:  req.body[team].a,
              result_b:  req.body[team].b
          }
-         guessings.push(game)    
+         guessings.push(game) 
+
         })
         const batch = guessings.map( guess => {
          return connection.execute('insert into guessings (result_a, result_b, game_id, groups_user_id, user_id) values (?,?,?,?,?)',[
@@ -60,7 +61,8 @@ const init = connection => {
            guess.game_id,
            req.params.id,
            req.session.user.id
-            ])  
+            ]) 
+             
         })
         await Promise.all(batch)
         
