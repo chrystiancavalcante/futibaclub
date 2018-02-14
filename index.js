@@ -13,7 +13,17 @@ const account = require('./account')
 const admin = require('./admin')
 const groups = require('./groups')
 const classification = require('./classification')
+const app = express()
 
+app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true}))
+app.use(session({
+    secret: 'softwarepro',
+    resave: true,
+    saveUninitialized: true
+}))
+
+const init = async() => {
 //Definindo o banco de dados
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
@@ -22,7 +32,6 @@ const db = low(adapter)
 const defaultData = require('./data/default-data.json')
 db.defaults(defaultData).write()
 
-const app = express();
 app.io = require('socket.io')()
 
 var placar = require('./routes/index')({io: app.io, db});
@@ -39,15 +48,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/placar', placar)
 app.use('/admin_placar', admin_placar)
 
-app.use(express.static('public'))
-app.use(bodyParser.urlencoded({ extended: true}))
-app.use(session({
-    secret: 'softwarepro',
-    resave: true,
-    saveUninitialized: true
-}))
-
-const init = async() => {
 connection = await mysql.createConnection(
         { 
 

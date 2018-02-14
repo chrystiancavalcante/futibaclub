@@ -29,7 +29,8 @@ app.post('/login', async(req, res) =>{
     }else{      
              const cipher = crypto.createCipher(alg, pwd)
              const crypted = cipher.update(req.body.passwd, 'utf8', 'hex')
-             if(rows[0].passwd===crypted){
+             var password = crypted
+             if(rows[0].passwd===password){
             const userDb = rows[0]
             const user = {
                 id: userDb.id,
@@ -51,10 +52,11 @@ app.post('/new-account', async(req, res) => {
         const { name, email, passwd, role } = req.body 
         const cipher = crypto.createCipher(alg, pwd)
         const crypted = cipher.update(req.body.passwd, 'utf8', 'hex')
-        const [inserted, insertFields] = await connection.execute('INSERT INTO users (name, email, passwd, role) values(?,?,?,?)', [
+        var password = crypted
+        const [inserted, insertFields] = await connection.execute('INSERT INTO users (name, email, password, role) values(?,?,?,?)', [
         name,
         email,
-        crypted,
+        password,
         'user'
     ])
     const user = {
