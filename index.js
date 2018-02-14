@@ -51,10 +51,18 @@ app.use('/admin_placar', admin_placar)
 connection = await mysql.createConnection(
         { 
 
+<<<<<<< HEAD
           host:'us-cdbr-iron-east-05.cleardb.net',
           user:'bac7187b8e72e9',
           password: '593fdea1',
           database:'heroku_da351e278e4b625' 
+=======
+          Promise: bluebird,
+          host:'localhost',
+          user:'root',
+          password: 'root',
+          database:'da351e278e4b625',  
+>>>>>>> 615b1d8acb25992cc713e2aba6aab3bce89c0658
           
         })
 
