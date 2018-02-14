@@ -3,7 +3,7 @@ const app = express.Router()
 const fs = require('fs')
 const crypto = require ('crypto')
 const alg ='aes-256-ctr'
-const pwd = 'abcdefgsssans'
+const pwd = 'abcddcsdscdcd'
 
 
 const init = connection => {
@@ -12,13 +12,17 @@ app.get('/', (req, res)=>{
     res.render('home')
 })
 
-app.get('/logout',(req, res) =>{
+app.get('/logout', async(req, res) =>{
     req.session.destroy( err => {
         res.redirect('/')
     })
 })
 
+<<<<<<< HEAD
 app.get('/login',(req, res) =>{
+=======
+app.get('/login', async(req, res) =>{
+>>>>>>> c5927be37b487d5e565597cf5e974f707948f6f1
     res.render('login', {error: false})
 })
 
@@ -77,7 +81,7 @@ app.post('/new-account', async(req, res) => {
     
 })
 
-app.get('/new-account',(req, res)=>{
+app.get('/new-account', async(req, res)=>{
     res.render('new-account', {error: false})
 })
 
