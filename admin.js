@@ -9,7 +9,7 @@ const init = connection => {
             next()
         }
     })
-    app.get('/', (req, res) => {
+    app.get('/', async(req, res) => {
         res.send('ola admin')
     })
    

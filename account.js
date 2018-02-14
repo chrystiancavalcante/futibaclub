@@ -7,7 +7,7 @@ const pwd = 'abcdefgsssans'
 
 
 const init = connection => {
-app.get('/', async(req, res)=>{
+app.get('/', (req, res)=>{
     
     res.render('home')
 })
@@ -18,7 +18,7 @@ app.get('/logout',(req, res) =>{
     })
 })
 
-app.get('/login', (req, res) =>{
+app.get('/login',(req, res) =>{
     res.render('login', {error: false})
 })
 
