@@ -12,13 +12,13 @@ app.get('/', async(req, res)=>{
     res.render('home')
 })
 
-app.get('/logout',(req, res) =>{
+app.get('/logout', async(req, res) =>{
     req.session.destroy( err => {
         res.redirect('/')
     })
 })
 
-app.get('/login', (req, res) =>{
+app.get('/login', async(req, res) =>{
     res.render('login', {error: false})
 })
 
@@ -77,7 +77,7 @@ app.post('/new-account', async(req, res) => {
     
 })
 
-app.get('/new-account',(req, res)=>{
+app.get('/new-account', async(req, res)=>{
     res.render('new-account', {error: false})
 })
 
